@@ -340,13 +340,13 @@
         <!-- Progress Bar -->
         <div class="mb-4">
           <div class="flex items-center justify-between text-xs font-bold mb-2">
-            <span class="text-brand-gold flex items-center gap-1.5">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> $35 Raised (5%)
+            <span id="goal-raised-text" class="text-brand-gold flex items-center gap-1.5 transition-all">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Loading live progress...
             </span>
-            <span class="text-gray-400">$665 to go ($700 Total)</span>
+            <span id="goal-remaining-text" class="text-gray-400">$665 to go ($700 Total)</span>
           </div>
           <div class="w-full h-4 bg-brand-bg rounded-full p-0.5 border border-brand-border overflow-hidden">
-            <div class="h-full rounded-full bg-gradient-to-r from-brand-goldDark via-brand-gold to-brand-goldLight shadow-md transition-all duration-1000" style="width: 5%;"></div>
+            <div id="goal-progress-bar" class="h-full rounded-full bg-gradient-to-r from-brand-goldDark via-brand-gold to-brand-goldLight shadow-md transition-all duration-1000" style="width: 5%;"></div>
           </div>
         </div>
 
@@ -533,6 +533,39 @@
 
   <script>
     lucide.createIcons();
+
+    // Real-time Supabase Goal Tracker Live Updater
+    async function syncLiveGoalStats() {
+      try {
+        const res = await fetch('https://qmbpfmgmpcjwzujlzybz.supabase.co/functions/v1/goal-stats');
+        if (!res.ok) return;
+        const data = await res.json();
+        
+        const raised = Math.round(data.raised);
+        const pct = Math.min(100, Math.max(0, data.percentage));
+        const remaining = Math.max(0, Math.round(data.remaining));
+        const supporters = data.supporters || 1;
+
+        const raisedEl = document.getElementById('goal-raised-text');
+        const remEl = document.getElementById('goal-remaining-text');
+        const barEl = document.getElementById('goal-progress-bar');
+
+        if (raisedEl) {
+          raisedEl.innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> $${raised} Raised (${pct}%) • ${supporters} Supporters`;
+        }
+        if (remEl) {
+          remEl.innerText = `$${remaining} to go ($${data.target} Total)`;
+        }
+        if (barEl) {
+          barEl.style.width = `${pct}%`;
+        }
+        lucide.createIcons();
+      } catch (e) {
+        console.debug('Using fallback goal stats:', e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', syncLiveGoalStats);
   </script>
 </body>
 </html>
