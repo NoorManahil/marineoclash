@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful — MarineoClash Pro</title>
+  <link rel="icon" type="image/x-icon" href="assets/marineoclash_logo.ico">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Cinzel', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              gold: '#E5A93C',
+              goldLight: '#F3C368',
+              goldDark: '#B8801E',
+              dark: '#0B0B0C',
+              surface: '#111215',
+              card: '#16181D',
+              border: '#232730',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glow-gold {
+      box-shadow: 0 0 50px -10px rgba(229, 169, 60, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-white min-h-screen flex flex-col justify-between selection:bg-brand-gold selection:text-black">
+
+  <!-- NAVIGATION -->
+  <header class="border-b border-brand-border/60 bg-brand-dark/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/marineoclash_logo.png" alt="MarineoClash" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-brand-gold/40 group-hover:scale-105 transition-transform">
+        <div>
+          <span class="font-display font-black text-lg sm:text-xl tracking-wider text-white">MARINEO<span class="text-brand-gold">CLASH</span></span>
+          <span class="block text-[10px] tracking-widest text-brand-gold/80 uppercase font-semibold">Pro License Delivery</span>
+        </div>
+      </a>
+      <a href="index.html" class="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1.5">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 max-w-3xl mx-auto px-4 py-12 sm:py-16 w-full flex flex-col items-center justify-center">
+    
+    <!-- SUCCESS ICON -->
+    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-500/10 border-2 border-emerald-500 flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/20 animate-bounce">
+      <i data-lucide="check" class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400"></i>
+    </div>
+
+    <h1 class="font-display font-extrabold text-2xl sm:text-4xl text-center text-white mb-2">
+      Payment Successful!
+    </h1>
+    <p class="text-gray-400 text-xs sm:text-base text-center max-w-lg mb-8">
+      Thank you for purchasing MarineoClash Pro. Your activation key is generated below.
+    </p>
+
+    <!-- LICENSE KEY CARD -->
+    <div id="license-container" class="w-full bg-brand-card border-2 border-brand-gold/60 rounded-3xl p-6 sm:p-8 glow-gold relative overflow-hidden">
+      
+      <!-- LOADING STATE -->
+      <div id="state-loading" class="flex flex-col items-center justify-center py-10">
+        <div class="w-10 h-10 border-3 border-brand-gold border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-sm font-semibold text-brand-gold">Retrieving your license key...</p>
+        <p class="text-xs text-gray-500 mt-1">Generating signed Ed25519 token</p>
+      </div>
+
+      <!-- LOADED STATE -->
+      <div id="state-loaded" class="hidden">
+        
+        <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-6">
+          <div>
+            <span class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Active Plan</span>
+            <h3 id="plan-name" class="font-bold text-base sm:text-lg text-white">MarineoClash Pro Pass</h3>
+          </div>
+          <span id="plan-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-brand-gold/15 text-brand-gold border border-brand-gold/30 uppercase">
+            Active
+          </span>
+        </div>
+
+        <label class="block text-xs font-semibold uppercase tracking-wider text-brand-gold mb-2">Your Pro License Key:</label>
+        
+        <!-- KEY DISPLAY BOX -->
+        <div class="relative flex items-center mb-6">
+          <input id="key-input" type="text" readonly value="Loading..." 
+            class="w-full bg-brand-dark border-2 border-brand-gold/80 rounded-2xl py-4 pl-4 pr-32 font-mono text-sm sm:text-base text-brand-gold font-bold focus:outline-none select-all tracking-wider shadow-inner">
+          
+          <button id="copy-btn" onclick="copyKey()" class="absolute right-2 px-4 py-2.5 rounded-xl bg-brand-gold hover:bg-brand-goldLight text-black font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all shadow-md active:scale-95">
+            <i data-lucide="copy" class="w-4 h-4"></i> <span id="copy-text">Copy</span>
+          </button>
+        </div>
+
+        <!-- DETAILS ROW -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-brand-dark/60 border border-brand-border text-xs mb-8">
+          <div>
+            <span class="text-gray-400 block mb-0.5">Purchased For:</span>
+            <span id="customer-name" class="font-semibold text-white truncate block">Valued Customer</span>
+          </div>
+          <div>
+            <span class="text-gray-400 block mb-0.5">Expires On:</span>
+            <span id="expiry-date" class="font-semibold text-white">30-Day Pass</span>
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <span class="text-gray-400 block mb-0.5">Allowed Devices:</span>
+            <span class="font-semibold text-emerald-400">1 PC (Hardware Locked)</span>
+          </div>
+        </div>
+
+        <!-- ACTIVATION INSTRUCTIONS -->
+        <div class="border-t border-brand-border pt-6">
+          <h4 class="font-bold text-sm text-white mb-3 flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-brand-gold"></i> How to Activate in 3 Easy Steps:
+          </h4>
+          <ol class="space-y-2 text-xs sm:text-sm text-gray-300 list-decimal list-inside leading-relaxed">
+            <li>Launch <b>MarineoClash</b> on your Windows PC.</li>
+            <li>Click the <b class="text-brand-gold">🔑 License</b> page in the left sidebar.</li>
+            <li>Paste your key above into the box and click <b class="text-emerald-400">Activate License</b>.</li>
+          </ol>
+        </div>
+
+      </div>
+
+      <!-- ERROR STATE -->
+      <div id="state-error" class="hidden text-center py-6">
+        <i data-lucide="alert-circle" class="w-10 h-10 text-amber-400 mx-auto mb-3"></i>
+        <h3 class="text-base font-bold text-white mb-1">Key Generation Pending</h3>
+        <p id="error-message" class="text-xs text-gray-400 max-w-md mx-auto mb-6">
+          Your payment was processed. If your key hasn't shown up yet, please refresh this page in a few seconds or check your email receipt.
+        </p>
+        <button onclick="location.reload()" class="px-5 py-2.5 rounded-xl bg-brand-gold text-black font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity">
+          Refresh Page
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="mt-8 flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+      <a href="index.html#download" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all">
+        <i data-lucide="download" class="w-4 h-4"></i> Download MarineoClash App
+      </a>
+      <a href="https://discord.gg" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#5865F2]/20 hover:bg-[#5865F2]/30 border border-[#5865F2]/40 text-[#5865F2] font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all">
+        <i data-lucide="message-square" class="w-4 h-4"></i> Join VIP Discord
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-brand-border py-6 text-center text-xs text-gray-500">
+    <p>© 2026 MarineoClash. All rights reserved.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let attempts = 0;
+    const maxAttempts = 10;
+
+    async function fetchKey() {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+
+      if (!sessionId) {
+        document.getElementById('state-loading').classList.add('hidden');
+        document.getElementById('state-error').classList.remove('hidden');
+        document.getElementById('error-message').textContent = "No checkout session ID found in URL. If you completed a purchase, check your email for the key.";
+        lucide.createIcons();
+        return;
+      }
+
+      try {
+        const res = await fetch(`https://qmbpfmgmpcjwzujlzybz.supabase.co/functions/v1/stripe-webhook?session_id=${encodeURIComponent(sessionId)}`);
+        const data = await res.json();
+
+        if (res.ok && data.found) {
+          document.getElementById('state-loading').classList.add('hidden');
+          document.getElementById('state-loaded').classList.remove('hidden');
+          
+          document.getElementById('key-input').value = data.license_key;
+          document.getElementById('customer-name').textContent = data.customer_name || "Valued Customer";
+          
+          if (data.plan === 'lifetime') {
+            document.getElementById('plan-name').textContent = "MarineoClash Pro Lifetime";
+            document.getElementById('expiry-date').textContent = "Never (Lifetime Access)";
+            document.getElementById('plan-badge').textContent = "Lifetime";
+          } else {
+            document.getElementById('plan-name').textContent = "MarineoClash Pro";
+            if (data.expires_at) {
+              const d = new Date(data.expires_at);
+              document.getElementById('expiry-date').textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+            }
+          }
+          lucide.createIcons();
+        } else {
+          attempts++;
+          if (attempts < maxAttempts) {
+            setTimeout(fetchKey, 1500);
+          } else {
+            document.getElementById('state-loading').classList.add('hidden');
+            document.getElementById('state-error').classList.remove('hidden');
+            lucide.createIcons();
+          }
+        }
+      } catch (err) {
+        attempts++;
+        if (attempts < maxAttempts) {
+          setTimeout(fetchKey, 1500);
+        } else {
+          document.getElementById('state-loading').classList.add('hidden');
+          document.getElementById('state-error').classList.remove('hidden');
+          lucide.createIcons();
+        }
+      }
+    }
+
+    function copyKey() {
+      const input = document.getElementById('key-input');
+      input.select();
+      navigator.clipboard.writeText(input.value).then(() => {
+        const btnText = document.getElementById('copy-text');
+        btnText.textContent = "Copied!";
+        setTimeout(() => {
+          btnText.textContent = "Copy";
+        }, 2000);
+      });
+    }
+
+    fetchKey();
+  </script>
+</body>
+</html>
