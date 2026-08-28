@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>MarineoClash — Autonomous Clash of Clans Autopilot for Google Play Games PC</title>
   <meta name="description" content="The safest Clash of Clans bot for Google Play Games on PC. 100% ban-free, no root, no ADB, pure computer vision & touch simulation. Safe for main accounts.">
   <link rel="icon" type="image/png" href="assets/marineoclash_logo.png">
@@ -14,7 +14,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -61,26 +61,31 @@
     }
   </style>
 </head>
-<body class="bg-brand-bg text-gray-100 antialiased selection:bg-brand-gold selection:text-black">
+<body class="bg-brand-bg text-gray-100 antialiased selection:bg-brand-gold selection:text-black overflow-x-hidden">
 
   <!-- TOP NAVIGATION -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-brand-bg/85 backdrop-blur-md border-b border-brand-border">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <img src="assets/marineoclash_logo.png" alt="MarineoClash Logo" class="w-9 h-9 object-contain drop-shadow">
-        <span class="font-display font-bold text-2xl tracking-tight">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3">
+        <img src="assets/marineoclash_logo.png" alt="MarineoClash Logo" class="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow">
+        <span class="font-display font-bold text-xl sm:text-2xl tracking-tight">
           <span class="text-brand-gold">Marineo</span><span>Clash</span>
         </span>
       </a>
 
+      <!-- Desktop Nav Links -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
         <a href="#features" class="hover:text-brand-gold transition-colors">Features</a>
         <a href="#safety" class="hover:text-brand-gold transition-colors">Why It's Safe</a>
+        <a href="#goal" class="hover:text-brand-gold transition-colors">Goal Tracker</a>
         <a href="#pricing" class="hover:text-brand-gold transition-colors">Pricing</a>
         <a href="#faq" class="hover:text-brand-gold transition-colors">FAQ</a>
       </nav>
 
-      <div class="flex items-center gap-4">
+      <!-- Desktop Action Buttons -->
+      <div class="hidden md:flex items-center gap-4">
         <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 rounded-lg border border-brand-border hover:border-brand-gold/50 text-gray-300 hover:text-white transition-all">
           <i data-lucide="message-square" class="w-4 h-4 text-brand-gold"></i>
           <span>Discord</span>
@@ -90,64 +95,92 @@
           <span>Get Access</span>
         </a>
       </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded-lg border border-brand-border bg-brand-surface text-gray-200 hover:text-brand-gold transition-colors">
+        <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+        <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Slide-Down Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brand-surface border-b border-brand-border px-6 py-6 space-y-4 shadow-2xl transition-all">
+      <nav class="flex flex-col space-y-3.5 text-base font-medium text-gray-300">
+        <a href="#features" class="mobile-nav-link hover:text-brand-gold transition-colors py-1">⚔️ Features</a>
+        <a href="#safety" class="mobile-nav-link hover:text-brand-gold transition-colors py-1">🛡️ Why It's Safe</a>
+        <a href="#goal" class="mobile-nav-link hover:text-brand-gold transition-colors py-1">🎮 Student Goal Tracker</a>
+        <a href="#pricing" class="mobile-nav-link hover:text-brand-gold transition-colors py-1">💳 Pricing Plans</a>
+        <a href="#faq" class="mobile-nav-link hover:text-brand-gold transition-colors py-1">❓ FAQ</a>
+      </nav>
+      <div class="pt-4 border-t border-brand-border flex flex-col gap-3">
+        <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="w-full py-3 rounded-xl border border-brand-border bg-brand-card hover:border-brand-gold/50 text-gray-200 text-sm font-semibold flex items-center justify-center gap-2">
+          <i data-lucide="message-square" class="w-4 h-4 text-brand-gold"></i>
+          <span>Join Discord (Free Version)</span>
+        </a>
+        <a href="#pricing" class="mobile-nav-link w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-black text-sm font-bold flex items-center justify-center gap-2 shadow-lg glow-gold-sm">
+          <i data-lucide="zap" class="w-4 h-4 fill-black"></i>
+          <span>Get Pro Access</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="relative pt-36 pb-24 overflow-hidden">
+  <section class="relative pt-28 sm:pt-36 pb-16 sm:pb-24 overflow-hidden">
     <!-- Ambient Background Glow -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] bg-brand-gold/15 blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[650px] h-[250px] sm:h-[320px] bg-brand-gold/15 blur-[100px] sm:blur-[150px] pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
       
       <!-- Announcement Pill -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs font-semibold uppercase tracking-wider mb-8">
-        <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
-        Built Exclusively for Official Google Play Games on PC
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-6 sm:mb-8 max-w-full text-center">
+        <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse shrink-0"></span>
+        <span class="truncate">Built for Official Google Play Games on PC</span>
       </div>
 
-      <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl leading-tight max-w-5xl mx-auto mb-6">
+      <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-7xl leading-tight max-w-5xl mx-auto mb-5 sm:mb-6 px-2">
         Autonomous Autopilot & Farming <br class="hidden sm:inline">
-        <span class="gold-gradient-text">100% Safe For Your Main Accounts</span>
+        <span class="gold-gradient-text">100% Safe For Main Accounts</span>
       </h1>
 
-      <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+      <p class="text-sm sm:text-lg text-gray-300 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light px-2">
         No root. No ADB debugging bridges. No memory injection. MarineoClash uses purely external computer vision and human-like touch simulation to farm 24/7, upgrade walls, clear obstacles, and rotate multiple accounts safely.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-        <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-bold text-base hover:opacity-95 transition-all shadow-xl glow-gold flex items-center justify-center gap-3">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 mb-12 sm:mb-16 px-4">
+        <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-bold text-base hover:opacity-95 transition-all shadow-xl glow-gold flex items-center justify-center gap-2.5">
           <i data-lucide="shield-check" class="w-5 h-5"></i>
           <span>Get Pro Access</span>
         </a>
-        <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/40 text-gray-200 font-semibold text-base transition-all flex items-center justify-center gap-3">
+        <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/40 text-gray-200 font-semibold text-base transition-all flex items-center justify-center gap-2.5">
           <i data-lucide="download" class="w-5 h-5 text-brand-gold"></i>
-          <span>Try Free Version (Join Discord)</span>
+          <span>Try Free (Discord)</span>
         </a>
       </div>
 
       <!-- Trust Badges -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto text-left px-2">
         <div class="p-4 rounded-xl bg-brand-card/80 border border-brand-border">
-          <div class="text-brand-gold font-bold text-base flex items-center gap-2 mb-1">
+          <div class="text-brand-gold font-bold text-sm sm:text-base flex items-center gap-2 mb-1">
             <i data-lucide="shield" class="w-4 h-4 text-brand-gold"></i> Safe For Main
           </div>
           <div class="text-xs text-gray-400">Zero root, zero ADB, zero memory modification.</div>
         </div>
         <div class="p-4 rounded-xl bg-brand-card/80 border border-brand-border">
-          <div class="text-brand-gold font-bold text-base flex items-center gap-2 mb-1">
+          <div class="text-brand-gold font-bold text-sm sm:text-base flex items-center gap-2 mb-1">
             <i data-lucide="monitor" class="w-4 h-4 text-brand-gold"></i> Google Play Games
           </div>
           <div class="text-xs text-gray-400">Direct native PC client compatibility.</div>
         </div>
         <div class="p-4 rounded-xl bg-brand-card/80 border border-brand-border">
-          <div class="text-brand-gold font-bold text-base flex items-center gap-2 mb-1">
+          <div class="text-brand-gold font-bold text-sm sm:text-base flex items-center gap-2 mb-1">
             <i data-lucide="users" class="w-4 h-4 text-brand-gold"></i> Multi-Account
           </div>
           <div class="text-xs text-gray-400">Continuous unattended 24/7 account rotation.</div>
         </div>
         <div class="p-4 rounded-xl bg-brand-card/80 border border-brand-border">
-          <div class="text-brand-gold font-bold text-base flex items-center gap-2 mb-1">
+          <div class="text-brand-gold font-bold text-sm sm:text-base flex items-center gap-2 mb-1">
             <i data-lucide="gift" class="w-4 h-4 text-brand-gold"></i> Free Trial Ready
           </div>
           <div class="text-xs text-gray-400">Test core features free before upgrading.</div>
@@ -158,64 +191,65 @@
   </section>
 
   <!-- SAFETY HIGHLIGHT SECTION -->
-  <section id="safety" class="py-20 bg-brand-surface border-y border-brand-border">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <section id="safety" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div>
           <span class="text-brand-gold font-semibold text-xs uppercase tracking-widest">Industry-Leading Security</span>
-          <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-2 mb-6">
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-white mt-2 mb-4 sm:mb-6">
             Why MarineoClash is 100% Safe For Your Main Accounts
           </h2>
           <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
             Traditional bots require rooted Android devices, suspicious ADB ports, or inject code into the game engine — which can easily trigger anti-cheat bans.
           </p>
-          <div class="space-y-4">
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-brand-card border border-brand-border">
-              <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="check" class="w-5 h-5"></i>
+          <div class="space-y-3.5 sm:space-y-4">
+            <div class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-brand-card border border-brand-border">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
               </div>
               <div>
-                <h4 class="text-white font-bold text-sm">No Root & No ADB Debug Bridges</h4>
-                <p class="text-gray-400 text-xs mt-1">Runs directly on official Google Play Games for Windows without opening exposed developer ports.</p>
+                <h4 class="text-white font-bold text-xs sm:text-sm">No Root & No ADB Debug Bridges</h4>
+                <p class="text-gray-400 text-xs mt-0.5 sm:mt-1">Runs directly on official Google Play Games for Windows without opening exposed developer ports.</p>
               </div>
             </div>
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-brand-card border border-brand-border">
-              <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="check" class="w-5 h-5"></i>
+            <div class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-brand-card border border-brand-border">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
               </div>
               <div>
-                <h4 class="text-white font-bold text-sm">Pure External Screen Vision</h4>
-                <p class="text-gray-400 text-xs mt-1">Sees the game just like a human player using OpenCV template matching. Never reads or touches game RAM.</p>
+                <h4 class="text-white font-bold text-xs sm:text-sm">Pure External Screen Vision</h4>
+                <p class="text-gray-400 text-xs mt-0.5 sm:mt-1">Sees the game just like a human player using OpenCV template matching. Never reads or touches game RAM.</p>
               </div>
             </div>
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-brand-card border border-brand-border">
-              <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="check" class="w-5 h-5"></i>
+            <div class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-xl bg-brand-card border border-brand-border">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
               </div>
               <div>
-                <h4 class="text-white font-bold text-sm">Humanized Touch & Click Emulation</h4>
-                <p class="text-gray-400 text-xs mt-1">Randomized micro-delays and jitter prevent pattern detection, making farming indistinguishable from manual play.</p>
+                <h4 class="text-white font-bold text-xs sm:text-sm">Humanized Touch & Click Emulation</h4>
+                <p class="text-gray-400 text-xs mt-0.5 sm:mt-1">Randomized micro-delays and jitter prevent pattern detection, making farming indistinguishable from manual play.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="p-8 rounded-3xl bg-brand-card border border-brand-gold/30 glow-gold-sm">
-          <h3 class="font-display font-bold text-2xl text-white mb-4 flex items-center gap-3">
-            <i data-lucide="sparkles" class="w-6 h-6 text-brand-gold"></i> Free Testing Version Available
+        <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-brand-card border border-brand-gold/30 glow-gold-sm">
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-3 sm:mb-4 flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-5 h-5 sm:w-6 sm:h-6 text-brand-gold"></i> Free Testing Version Available
           </h3>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">
+          <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">
             We believe in transparency. You can test MarineoClash on your PC completely free before purchasing a Pro license. Join our Discord community to download the free test build and get setup support from our team!
           </p>
           <div class="p-4 rounded-xl bg-brand-surface border border-brand-border mb-6">
-            <div class="text-xs text-brand-gold font-semibold uppercase tracking-wider mb-2">Free Version Includes:</div>
+            <div class="text-[11px] sm:text-xs text-brand-gold font-semibold uppercase tracking-wider mb-2">Free Version Includes:</div>
             <ul class="space-y-2 text-xs text-gray-300">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> Live Google Play Games PC screen capture</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> Single-village BARCH farming & loot tracker</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> Automatic dead base searching</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold shrink-0"></i> Live Google Play Games PC screen capture</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold shrink-0"></i> Home Village BARCH & Valkyrie farming</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold shrink-0"></i> Builder Base Baby Dragon attacks</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold shrink-0"></i> Smart Wall Upgrades & Real-time loot tracker</li>
             </ul>
           </div>
-          <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="w-full py-3.5 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-gold text-white font-semibold text-sm text-center flex items-center justify-center gap-2 transition-all">
+          <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="w-full py-3.5 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-gold text-white font-semibold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all">
             <i data-lucide="message-square" class="w-4 h-4 text-brand-gold"></i>
             <span>Join Discord for Free Version</span>
           </a>
@@ -225,78 +259,78 @@
   </section>
 
   <!-- FEATURES SHOWCASE -->
-  <section id="features" class="py-24 bg-brand-bg">
-    <div class="max-w-7xl mx-auto px-6">
+  <section id="features" class="py-16 sm:py-24 bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-brand-gold font-semibold text-xs uppercase tracking-widest mb-3">Complete Automation Arsenal</h2>
-        <p class="font-display font-bold text-3xl sm:text-5xl text-white">Engineered For 24/7 Max Progression</p>
+      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <h2 class="text-brand-gold font-semibold text-xs uppercase tracking-widest mb-2 sm:mb-3">Complete Automation Arsenal</h2>
+        <p class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl text-white">Engineered For 24/7 Max Progression</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         
         <!-- Card 1 -->
-        <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="users" class="w-6 h-6"></i>
+        <div class="p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="users" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="font-display font-bold text-xl text-white mb-3">Multi-Account Rotation</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-2.5">Multi-Account Rotation</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             Queue unlimited accounts. The bot switches Supercell IDs automatically, collects resources, attacks, and rotates villages continuously 24/7.
           </p>
         </div>
 
         <!-- Card 2 -->
-        <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="hammer" class="w-6 h-6"></i>
+        <div class="p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="hammer" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="font-display font-bold text-xl text-white mb-3">Builder Base 2.0 Loop</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-2.5">Builder Base 2.0 Loop</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             Autonomous boat shoreline navigation with high-speed Night Witch bat swarm surges (1.5s ability deployment) for effortless Builder Gold and Elixir.
           </p>
         </div>
 
         <!-- Card 3 -->
-        <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="gem" class="w-6 h-6"></i>
+        <div class="p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="gem" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="font-display font-bold text-xl text-white mb-3">Obstacle & Gem Box Removal</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-2.5">Obstacle & Gem Box Removal</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             Full 4-quadrant camera patrols identify and clear trees, logs, and 25-gem Gem Boxes automatically with strict UI boundary protection.
           </p>
         </div>
 
         <!-- Card 4 -->
-        <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="swords" class="w-6 h-6"></i>
+        <div class="p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="swords" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="font-display font-bold text-xl text-white mb-3">32-Point Diamond BARCH</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-2.5">32-Point Diamond BARCH</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             Rapid perimeter troop dispersion across all four map boundaries to overwhelm collector setups and secure 100% available loot.
           </p>
         </div>
 
         <!-- Card 5 -->
-        <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="shield" class="w-6 h-6"></i>
+        <div class="p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="shield" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="font-display font-bold text-xl text-white mb-3">Auto Wall Upgrader</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-2.5">Auto Wall Upgrader</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             Never let overflowing loot sit idle. Set gold and elixir spending thresholds to dump excess resources into walls before logging off.
           </p>
         </div>
 
         <!-- Card 6 -->
-        <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <i data-lucide="clock" class="w-6 h-6"></i>
+        <div class="p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="clock" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="font-display font-bold text-xl text-white mb-3">24/7 Unattended Farming</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+          <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-2.5">24/7 Unattended Farming</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             Autonomous sleep cycles, anti-kick keep-alives, and automatic reconnection ensure uninterrupted progression around the clock.
           </p>
         </div>
@@ -306,34 +340,33 @@
     </div>
   </section>
 
-
   <!-- STUDENT DEVELOPER GOAL TRACKER -->
-  <section class="py-16 bg-brand-surface/50 border-b border-brand-border relative overflow-hidden">
-    <div class="max-w-5xl mx-auto px-6">
+  <section id="goal" class="py-12 sm:py-16 bg-brand-surface/50 border-y border-brand-border relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
       
-      <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-brand-card to-brand-surface border border-brand-gold/30 shadow-2xl relative glow-gold-sm">
+      <div class="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-brand-card to-brand-surface border border-brand-gold/30 shadow-2xl relative glow-gold-sm">
         
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
-          <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 border border-brand-gold/30 text-brand-gold flex items-center justify-center shrink-0">
-              <i data-lucide="gamepad-2" class="w-8 h-8"></i>
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6 mb-6 sm:mb-8">
+          <div class="flex items-center gap-3.5 sm:gap-4">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-gold/10 border border-brand-gold/30 text-brand-gold flex items-center justify-center shrink-0">
+              <i data-lucide="gamepad-2" class="w-6 h-6 sm:w-8 sm:h-8"></i>
             </div>
             <div>
-              <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-brand-gold/15 border border-brand-gold/30 text-brand-gold text-xs font-bold uppercase tracking-wider mb-1">
-                <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-gold/15 border border-brand-gold/30 text-brand-gold text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">
+                <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-gold animate-pulse"></span>
                 Developer Milestone
               </div>
-              <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">Student Goal: PS5 + GTA VI 🌴</h3>
+              <h3 class="font-display font-bold text-xl sm:text-3xl text-white">Student Goal: PS5 + GTA VI 🌴</h3>
             </div>
           </div>
 
-          <div class="text-right">
-            <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Goal Target</div>
-            <div class="font-display font-extrabold text-3xl text-brand-gold">$700</div>
+          <div class="text-left md:text-right">
+            <div class="text-[10px] sm:text-xs font-semibold text-gray-400 uppercase tracking-wider">Goal Target</div>
+            <div class="font-display font-extrabold text-2xl sm:text-3xl text-brand-gold">$700</div>
           </div>
         </div>
 
-        <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+        <p class="text-gray-300 text-xs sm:text-base leading-relaxed mb-6">
           Hey everyone! I'm a student developer building and maintaining MarineoClash. My dream milestone is to fund a <b>PlayStation 5 & GTA VI</b> directly from this project! Every license purchase or contribution directly supports ongoing bot updates, new attack algorithms, and keeps the project thriving.
         </p>
 
@@ -341,26 +374,26 @@
         <div class="mb-4">
           <div class="flex items-center justify-between text-xs font-bold mb-2">
             <span id="goal-raised-text" class="text-brand-gold flex items-center gap-1.5 transition-all">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Loading live progress...
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> $0 Raised (0%) • 0 Supporters
             </span>
-            <span id="goal-remaining-text" class="text-gray-400">$665 to go ($700 Total)</span>
+            <span id="goal-remaining-text" class="text-gray-400">$700 to go ($700 Total)</span>
           </div>
-          <div class="w-full h-4 bg-brand-bg rounded-full p-0.5 border border-brand-border overflow-hidden">
-            <div id="goal-progress-bar" class="h-full rounded-full bg-gradient-to-r from-brand-goldDark via-brand-gold to-brand-goldLight shadow-md transition-all duration-1000" style="width: 5%;"></div>
+          <div class="w-full h-3.5 sm:h-4 bg-brand-bg rounded-full p-0.5 border border-brand-border overflow-hidden">
+            <div id="goal-progress-bar" class="h-full rounded-full bg-gradient-to-r from-brand-goldDark via-brand-gold to-brand-goldLight shadow-md transition-all duration-1000" style="width: 0%;"></div>
           </div>
         </div>
 
         <!-- Call to Actions -->
-        <div class="flex flex-col sm:flex-row items-center gap-4 pt-4 border-t border-brand-border/60">
-          <a href="#pricing" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-bold text-sm text-center flex items-center justify-center gap-2 hover:opacity-95 shadow-md transition-all">
+        <div class="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-brand-border/60">
+          <a href="#pricing" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 hover:opacity-95 shadow-md transition-all">
             <i data-lucide="zap" class="w-4 h-4 fill-black"></i>
             <span>Support by Buying a License</span>
           </a>
-          <a href="https://buy.stripe.com/test_donate" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-gold/40 text-gray-200 font-semibold text-sm text-center flex items-center justify-center gap-2 transition-all">
+          <a href="https://buy.stripe.com/test_donate" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-gold/40 text-gray-200 font-semibold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all">
             <i data-lucide="coffee" class="w-4 h-4 text-brand-gold"></i>
             <span>Custom Tip / Donation</span>
           </a>
-          <div class="text-xs text-gray-400 ml-auto text-center sm:text-right">
+          <div class="text-[11px] sm:text-xs text-gray-400 sm:ml-auto text-center sm:text-right mt-2 sm:mt-0">
             ❤️ Thank you for fueling indie development!
           </div>
         </div>
@@ -371,94 +404,94 @@
   </section>
 
   <!-- PRICING SECTION (3 PLANS) -->
-  <section id="pricing" class="py-24 bg-brand-surface border-t border-brand-border relative">
-    <div class="max-w-7xl mx-auto px-6">
+  <section id="pricing" class="py-16 sm:py-24 bg-brand-surface border-t border-brand-border relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-brand-gold font-semibold text-xs uppercase tracking-widest mb-3">Simple & Affordable</h2>
-        <p class="font-display font-bold text-3xl sm:text-5xl text-white">Choose Your Access Plan</p>
-        <p class="text-gray-400 text-sm sm:text-base mt-4">Instant automated license key delivery to your email upon payment.</p>
+      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <h2 class="text-brand-gold font-semibold text-xs uppercase tracking-widest mb-2 sm:mb-3">Simple & Affordable</h2>
+        <p class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl text-white">Choose Your Access Plan</p>
+        <p class="text-gray-400 text-xs sm:text-base mt-2 sm:mt-4">Instant automated license key delivery to your email upon payment.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
         
         <!-- 1 Month Plan ($7) -->
-        <div class="p-8 rounded-3xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all flex flex-col justify-between">
+        <div class="p-6 sm:p-8 rounded-3xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="text-sm font-semibold uppercase tracking-wider text-gray-300">Pro Monthly</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/10 text-brand-gold border border-brand-gold/20">30-Day Pass</span>
+              <span class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-300">Pro Monthly</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold bg-brand-gold/10 text-brand-gold border border-brand-gold/20">30-Day Pass</span>
             </div>
-            <div class="flex items-baseline gap-2 mb-6">
-              <span class="font-display font-bold text-5xl text-white">$7</span>
-              <span class="text-gray-400 text-sm">/ month</span>
+            <div class="flex items-baseline gap-2 mb-5 sm:mb-6">
+              <span class="font-display font-bold text-4xl sm:text-5xl text-white">$7</span>
+              <span class="text-gray-400 text-xs sm:text-sm">/ month</span>
             </div>
-            <ul class="space-y-3.5 text-sm text-gray-300 mb-8">
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> 24/7 Unattended Farming</li>
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Multi-Account Auto Rotation</li>
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Builder Base 2.0 Night Witch</li>
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Auto Wall Upgrades & Obstacles</li>
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Instant License Key Delivery</li>
+            <ul class="space-y-3 text-xs sm:text-sm text-gray-300 mb-8">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> 24/7 Unattended Farming</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> Multi-Account Auto Rotation</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> Builder Base 2.0 Night Witch</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> Auto Wall Upgrades & Obstacles</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> Instant License Key Delivery</li>
             </ul>
           </div>
           <!-- STRIPE LINK PLACEHOLDER -->
-          <a href="https://buy.stripe.com/test_1month" target="_blank" class="w-full py-3.5 rounded-xl border border-brand-gold/60 hover:bg-brand-gold/10 text-brand-gold font-bold text-center block transition-all">
+          <a href="https://buy.stripe.com/test_1month" target="_blank" class="w-full py-3.5 rounded-xl border border-brand-gold/60 hover:bg-brand-gold/10 text-brand-gold font-bold text-sm text-center block transition-all">
             Get 1 Month Pass
           </a>
         </div>
 
         <!-- 3 Months Plan ($18) -->
-        <div class="p-8 rounded-3xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all flex flex-col justify-between relative">
-          <div class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-bold uppercase tracking-wider">
+        <div class="p-6 sm:p-8 rounded-3xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition-all flex flex-col justify-between relative">
+          <div class="absolute -top-3.5 right-6 px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] sm:text-xs font-bold uppercase tracking-wider">
             Save 15%
           </div>
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="text-sm font-semibold uppercase tracking-wider text-gray-300">Pro Quarterly</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/10 text-brand-gold border border-brand-gold/20">90-Day Pass</span>
+              <span class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-300">Pro Quarterly</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold bg-brand-gold/10 text-brand-gold border border-brand-gold/20">90-Day Pass</span>
             </div>
-            <div class="flex items-baseline gap-2 mb-6">
-              <span class="font-display font-bold text-5xl text-white">$18</span>
-              <span class="text-gray-400 text-sm">/ 3 months</span>
+            <div class="flex items-baseline gap-2 mb-5 sm:mb-6">
+              <span class="font-display font-bold text-4xl sm:text-5xl text-white">$18</span>
+              <span class="text-gray-400 text-xs sm:text-sm">/ 3 months</span>
             </div>
-            <ul class="space-y-3.5 text-sm text-gray-300 mb-8">
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> <b>All Pro Features Included</b></li>
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> 24/7 Unattended Farming</li>
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Multi-Account Auto Rotation</li>
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Builder Base 2.0 Night Witch</li>
-              <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Priority Customer Support</li>
+            <ul class="space-y-3 text-xs sm:text-sm text-gray-300 mb-8">
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> <b>All Pro Features Included</b></li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> 24/7 Unattended Farming</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> Multi-Account Auto Rotation</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> Builder Base 2.0 Night Witch</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-brand-gold shrink-0"></i> Priority Customer Support</li>
             </ul>
           </div>
           <!-- STRIPE LINK PLACEHOLDER -->
-          <a href="https://buy.stripe.com/test_3months" target="_blank" class="w-full py-3.5 rounded-xl border border-brand-gold/60 hover:bg-brand-gold/10 text-brand-gold font-bold text-center block transition-all">
+          <a href="https://buy.stripe.com/test_3months" target="_blank" class="w-full py-3.5 rounded-xl border border-brand-gold/60 hover:bg-brand-gold/10 text-brand-gold font-bold text-sm text-center block transition-all">
             Get 3 Months Pass
           </a>
         </div>
 
         <!-- Lifetime Plan ($50) [Highlighted] -->
-        <div class="p-8 rounded-3xl bg-brand-card border-2 border-brand-gold relative flex flex-col justify-between glow-gold">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-gold text-black text-xs font-extrabold uppercase tracking-wider shadow-md">
+        <div class="p-6 sm:p-8 rounded-3xl bg-brand-card border-2 border-brand-gold relative flex flex-col justify-between glow-gold">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-brand-gold text-black text-[10px] sm:text-xs font-extrabold uppercase tracking-wider shadow-md">
             Best Value ★
           </div>
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="text-sm font-semibold uppercase tracking-wider text-brand-gold">Pro Lifetime</span>
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/20 text-brand-gold border border-brand-gold/40">Never Expire</span>
+              <span class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-brand-gold">Pro Lifetime</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold bg-brand-gold/20 text-brand-gold border border-brand-gold/40">Never Expire</span>
             </div>
-            <div class="flex items-baseline gap-2 mb-6">
-              <span class="font-display font-bold text-5xl text-white">$50</span>
-              <span class="text-gray-400 text-sm">one-time</span>
+            <div class="flex items-baseline gap-2 mb-5 sm:mb-6">
+              <span class="font-display font-bold text-4xl sm:text-5xl text-white">$50</span>
+              <span class="text-gray-400 text-xs sm:text-sm">one-time</span>
             </div>
-            <ul class="space-y-3.5 text-sm text-gray-200 mb-8">
-              <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i> <b>Unlimited Lifetime Access</b></li>
-              <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i> <b>All future updates & strategies</b></li>
-              <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i> VIP Discord Pro Role</li>
-              <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i> Hardware ID Reset Support</li>
-              <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i> Zero recurring monthly charges</li>
+            <ul class="space-y-3 text-xs sm:text-sm text-gray-200 mb-8">
+              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold shrink-0"></i> <b>Unlimited Lifetime Access</b></li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold shrink-0"></i> <b>All future updates & strategies</b></li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold shrink-0"></i> VIP Discord Pro Role</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold shrink-0"></i> Hardware ID Reset Support</li>
+              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold shrink-0"></i> Zero recurring monthly charges</li>
             </ul>
           </div>
           <!-- STRIPE LINK PLACEHOLDER -->
-          <a href="https://buy.stripe.com/test_lifetime" target="_blank" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold text-center block shadow-lg hover:opacity-95 transition-all">
+          <a href="https://buy.stripe.com/test_lifetime" target="_blank" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold text-sm sm:text-base text-center block shadow-lg hover:opacity-95 transition-all">
             Get Lifetime Access
           </a>
         </div>
@@ -469,40 +502,40 @@
   </section>
 
   <!-- FAQ SECTION -->
-  <section id="faq" class="py-24 bg-brand-bg">
-    <div class="max-w-4xl mx-auto px-6">
+  <section id="faq" class="py-16 sm:py-24 bg-brand-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
       
-      <div class="text-center mb-16">
-        <h2 class="text-brand-gold font-semibold text-xs uppercase tracking-widest mb-3">Got Questions?</h2>
-        <p class="font-display font-bold text-3xl sm:text-4xl text-white">Frequently Asked Questions</p>
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-brand-gold font-semibold text-xs uppercase tracking-widest mb-2 sm:mb-3">Got Questions?</h2>
+        <p class="font-display font-bold text-2xl sm:text-4xl text-white">Frequently Asked Questions</p>
       </div>
 
-      <div class="space-y-6">
+      <div class="space-y-4 sm:space-y-6">
         
-        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
-          <h3 class="font-display font-bold text-lg text-white mb-2">Why is MarineoClash safe for main accounts?</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+        <div class="p-5 sm:p-6 rounded-2xl bg-brand-surface border border-brand-border">
+          <h3 class="font-display font-bold text-base sm:text-lg text-white mb-2">Why is MarineoClash safe for main accounts?</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             MarineoClash does not require root or ADB debugging bridges. It runs strictly through the official <b>Google Play Games for PC</b> client, reading the screen externally using computer vision and emulating humanized mouse inputs. It leaves zero traces in game memory or network packets.
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
-          <h3 class="font-display font-bold text-lg text-white mb-2">Is there a free trial / version available?</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+        <div class="p-5 sm:p-6 rounded-2xl bg-brand-surface border border-brand-border">
+          <h3 class="font-display font-bold text-base sm:text-lg text-white mb-2">Is there a free trial / version available?</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             Yes! You can join our <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="text-brand-gold underline font-semibold">Discord Community</a> to test the free version on your PC before purchasing a Pro license.
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
-          <h3 class="font-display font-bold text-lg text-white mb-2">How do I receive my license key after purchasing?</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+        <div class="p-5 sm:p-6 rounded-2xl bg-brand-surface border border-brand-border">
+          <h3 class="font-display font-bold text-base sm:text-lg text-white mb-2">How do I receive my license key after purchasing?</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             As soon as your Stripe payment completes, our Supabase licensing server generates your Ed25519-signed key and emails it directly to your inbox. Simply paste the key in the <b>🔑 License</b> tab in the MarineoClash app to activate.
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
-          <h3 class="font-display font-bold text-lg text-white mb-2">Can I manage multiple Clash of Clans accounts?</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
+        <div class="p-5 sm:p-6 rounded-2xl bg-brand-surface border border-brand-border">
+          <h3 class="font-display font-bold text-base sm:text-lg text-white mb-2">Can I manage multiple Clash of Clans accounts?</h3>
+          <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
             Yes! MarineoClash includes an automated account rotation engine that smoothly cycles through your Supercell ID profiles, performs farm runs and village upgrades, and rotates automatically 24/7.
           </p>
         </div>
@@ -513,16 +546,16 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-12 bg-brand-surface border-t border-brand-border">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-gray-500">
-      <div class="flex items-center gap-3">
+  <footer class="py-10 sm:py-12 bg-brand-surface border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 text-xs sm:text-sm text-gray-500 text-center md:text-left">
+      <div class="flex items-center gap-2.5 justify-center">
         <img src="assets/marineoclash_logo.png" alt="Logo" class="w-6 h-6 object-contain">
         <span class="font-display font-bold text-white"><span class="text-brand-gold">Marineo</span>Clash</span>
       </div>
       <div>
         © 2026 MarineoClash. All rights reserved. Not affiliated with Supercell.
       </div>
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 justify-center">
         <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="text-brand-gold hover:underline flex items-center gap-1.5">
           <i data-lucide="message-square" class="w-4 h-4"></i> Discord
         </a>
@@ -534,6 +567,36 @@
   <script>
     lucide.createIcons();
 
+    // Mobile Hamburger Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          menuIconOpen.classList.add('hidden');
+          menuIconClose.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+        }
+      });
+
+      // Close menu when tapping any mobile nav link
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+        });
+      });
+    }
+
     // Real-time Supabase Goal Tracker Live Updater
     async function syncLiveGoalStats() {
       try {
@@ -544,7 +607,7 @@
         const raised = Math.round(data.raised);
         const pct = Math.min(100, Math.max(0, data.percentage));
         const remaining = Math.max(0, Math.round(data.remaining));
-        const supporters = data.supporters || 1;
+        const supporters = data.supporters || 0;
 
         const raisedEl = document.getElementById('goal-raised-text');
         const remEl = document.getElementById('goal-remaining-text');
