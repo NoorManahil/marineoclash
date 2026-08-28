@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Payment Successful — MarineoClash Pro</title>
   <link rel="icon" type="image/x-icon" href="assets/marineoclash_logo.ico">
   
@@ -124,7 +127,7 @@
           </div>
           <div>
             <span class="text-gray-400 block mb-0.5">Expires On:</span>
-            <span id="expiry-date" class="font-semibold text-white">30-Day Pass</span>
+            <span id="expiry-date" class="font-semibold text-white">90-Day Pass</span>
           </div>
           <div class="col-span-2 sm:col-span-1">
             <span class="text-gray-400 block mb-0.5">Allowed Devices:</span>
@@ -180,27 +183,23 @@
   <script>
     try { lucide.createIcons(); } catch(e) {}
 
-    let attempts = 0;
-    const maxAttempts = 12;
-
     async function fetchKey() {
       const params = new URLSearchParams(window.location.search);
       const sessionId = params.get('session_id');
 
+      const loadingEl = document.getElementById('state-loading');
+      const loadedEl = document.getElementById('state-loaded');
+      const errorEl = document.getElementById('state-error');
+
       if (!sessionId) {
-        document.getElementById('state-loading').style.display = 'none';
-        document.getElementById('state-error').style.display = 'block';
-        document.getElementById('error-message').textContent = "No checkout session ID found in URL. If you completed a purchase, check your email for the key.";
-        try { lucide.createIcons(); } catch(e) {}
+        if (loadingEl) loadingEl.style.display = 'none';
+        if (errorEl) errorEl.style.display = 'block';
         return;
       }
 
       try {
-        const url = `https://qmbpfmgmpcjwzujlzybz.supabase.co/functions/v1/stripe-webhook?session_id=${encodeURIComponent(sessionId)}`;
-        const res = await fetch(url, {
-          method: 'GET',
-          headers: { 'Accept': 'application/json' }
-        });
+        const url = 'https://qmbpfmgmpcjwzujlzybz.supabase.co/functions/v1/stripe-webhook?session_id=' + encodeURIComponent(sessionId) + '&t=' + Date.now();
+        const res = await fetch(url);
         const data = await res.json();
 
         if (res.ok && data.found && data.license_key) {
@@ -225,29 +224,14 @@
             }
           }
 
-          document.getElementById('state-loading').style.display = 'none';
-          document.getElementById('state-loaded').style.display = 'block';
+          if (loadingEl) loadingEl.style.display = 'none';
+          if (loadedEl) loadedEl.style.display = 'block';
           try { lucide.createIcons(); } catch(e) {}
-          return;
         } else {
-          attempts++;
-          if (attempts < maxAttempts) {
-            setTimeout(fetchKey, 1500);
-          } else {
-            document.getElementById('state-loading').style.display = 'none';
-            document.getElementById('state-error').style.display = 'block';
-            try { lucide.createIcons(); } catch(e) {}
-          }
+          setTimeout(fetchKey, 2000);
         }
       } catch (err) {
-        attempts++;
-        if (attempts < maxAttempts) {
-          setTimeout(fetchKey, 1500);
-        } else {
-          document.getElementById('state-loading').style.display = 'none';
-          document.getElementById('state-error').style.display = 'block';
-          try { lucide.createIcons(); } catch(e) {}
-        }
+        setTimeout(fetchKey, 2000);
       }
     }
 
