@@ -92,7 +92,7 @@
       </div>
 
       <!-- LOADED STATE -->
-      <div id="state-loaded" class="hidden">
+      <div id="state-loaded" style="display: none;">
         
         <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-6">
           <div>
@@ -147,7 +147,7 @@
       </div>
 
       <!-- ERROR STATE -->
-      <div id="state-error" class="hidden text-center py-6">
+      <div id="state-error" style="display: none;" class="text-center py-6">
         <i data-lucide="alert-circle" class="w-10 h-10 text-amber-400 mx-auto mb-3"></i>
         <h3 class="text-base font-bold text-white mb-1">Key Generation Pending</h3>
         <p id="error-message" class="text-xs text-gray-400 max-w-md mx-auto mb-6">
@@ -165,7 +165,7 @@
       <a href="https://github.com/NoorManahil/marineoclash/releases/download/v1.3.0/MarineoClash_v1.3.0.zip" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all">
         <i data-lucide="download" class="w-4 h-4"></i> Download MarineoClash App
       </a>
-      <a href="https://discord.gg" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#5865F2]/20 hover:bg-[#5865F2]/30 border border-[#5865F2]/40 text-[#5865F2] font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all">
+      <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#5865F2]/20 hover:bg-[#5865F2]/30 border border-[#5865F2]/40 text-[#5865F2] font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all">
         <i data-lucide="message-square" class="w-4 h-4"></i> Join VIP Discord
       </a>
     </div>
@@ -178,54 +178,65 @@
   </footer>
 
   <script>
-    lucide.createIcons();
+    try { lucide.createIcons(); } catch(e) {}
 
     let attempts = 0;
-    const maxAttempts = 10;
+    const maxAttempts = 12;
 
     async function fetchKey() {
       const params = new URLSearchParams(window.location.search);
       const sessionId = params.get('session_id');
 
       if (!sessionId) {
-        document.getElementById('state-loading').classList.add('hidden');
-        document.getElementById('state-error').classList.remove('hidden');
+        document.getElementById('state-loading').style.display = 'none';
+        document.getElementById('state-error').style.display = 'block';
         document.getElementById('error-message').textContent = "No checkout session ID found in URL. If you completed a purchase, check your email for the key.";
-        lucide.createIcons();
+        try { lucide.createIcons(); } catch(e) {}
         return;
       }
 
       try {
-        const res = await fetch(`https://qmbpfmgmpcjwzujlzybz.supabase.co/functions/v1/stripe-webhook?session_id=${encodeURIComponent(sessionId)}`);
+        const url = `https://qmbpfmgmpcjwzujlzybz.supabase.co/functions/v1/stripe-webhook?session_id=${encodeURIComponent(sessionId)}`;
+        const res = await fetch(url, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' }
+        });
         const data = await res.json();
 
-        if (res.ok && data.found) {
-          document.getElementById('state-loading').classList.add('hidden');
-          document.getElementById('state-loaded').classList.remove('hidden');
-          
-          document.getElementById('key-input').value = data.license_key;
-          document.getElementById('customer-name').textContent = data.customer_name || "Valued Customer";
+        if (res.ok && data.found && data.license_key) {
+          const keyInput = document.getElementById('key-input');
+          const custName = document.getElementById('customer-name');
+          const planName = document.getElementById('plan-name');
+          const expDate = document.getElementById('expiry-date');
+          const planBadge = document.getElementById('plan-badge');
+
+          if (keyInput) keyInput.value = data.license_key;
+          if (custName) custName.textContent = data.customer_name || "Valued Customer";
           
           if (data.plan === 'lifetime') {
-            document.getElementById('plan-name').textContent = "MarineoClash Pro Lifetime";
-            document.getElementById('expiry-date').textContent = "Never (Lifetime Access)";
-            document.getElementById('plan-badge').textContent = "Lifetime";
+            if (planName) planName.textContent = "MarineoClash Pro Lifetime";
+            if (expDate) expDate.textContent = "Never (Lifetime Access)";
+            if (planBadge) planBadge.textContent = "Lifetime";
           } else {
-            document.getElementById('plan-name').textContent = "MarineoClash Pro";
-            if (data.expires_at) {
+            if (planName) planName.textContent = "MarineoClash Pro (90-Day Pass)";
+            if (expDate && data.expires_at) {
               const d = new Date(data.expires_at);
-              document.getElementById('expiry-date').textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+              expDate.textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
             }
           }
-          lucide.createIcons();
+
+          document.getElementById('state-loading').style.display = 'none';
+          document.getElementById('state-loaded').style.display = 'block';
+          try { lucide.createIcons(); } catch(e) {}
+          return;
         } else {
           attempts++;
           if (attempts < maxAttempts) {
             setTimeout(fetchKey, 1500);
           } else {
-            document.getElementById('state-loading').classList.add('hidden');
-            document.getElementById('state-error').classList.remove('hidden');
-            lucide.createIcons();
+            document.getElementById('state-loading').style.display = 'none';
+            document.getElementById('state-error').style.display = 'block';
+            try { lucide.createIcons(); } catch(e) {}
           }
         }
       } catch (err) {
@@ -233,9 +244,9 @@
         if (attempts < maxAttempts) {
           setTimeout(fetchKey, 1500);
         } else {
-          document.getElementById('state-loading').classList.add('hidden');
-          document.getElementById('state-error').classList.remove('hidden');
-          lucide.createIcons();
+          document.getElementById('state-loading').style.display = 'none';
+          document.getElementById('state-error').style.display = 'block';
+          try { lucide.createIcons(); } catch(e) {}
         }
       }
     }
