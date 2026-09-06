@@ -1,12 +1,8 @@
 {
-  "version": "1.3.1",
-  "latest_version": "1.3.1",
+  "latest_version": "1.0.0",
   "release_date": "2026-09-06",
-  "download_url": "https://www.mediafire.com/file/2a4og028y3hh58e/MarineoClash_v1.3.1.zip/file",
+  "download_url": "",
   "changelog": [
-    "Added Supabase hardware-locked key activation gate",
-    "Added in-app License Active Till display and management",
-    "Added automatic background update notifications",
-    "Preserved open filesystem templates for OpenCV matching"
+    "Official v1.0.0 Pro release with Supabase licensing and auto-updater."
   ]
 }
