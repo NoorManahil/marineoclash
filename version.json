@@ -1,10 +1,12 @@
 {
   "latest_version": "1.0.1",
   "release_date": "2026-09-06",
-  "download_url": "https://www.mediafire.com/file/ql8kij7z6fftjmz/MarineoClashPro-1.0.0-win64.zip/file",
+  "download_url": "https://www.mediafire.com/file/bc7j85qyguzdzto/MarineoClashPro-1.0.1-win64.zip/file",
+  "sha256": "a10c36577c075b18baa079f03a43364ec736989b8e0c093b2037008274e1fbcc",
   "changelog": [
-    "Fixed Multi-Account UI: adding accounts now appends without overwriting existing accounts.",
-    "Added Enter key shortcut in Account ID field for rapid entry.",
-    "Separated + ADD and UPDATE buttons for explicit list control."
+    "Bundled PyAV & 25 FFmpeg runtime libraries for High-Speed Stream (H.264 @ ~20 FPS) screen capture.",
+    "Fixed Multi-Account UI: accounts now append cleanly without overwriting existing accounts.",
+    "Added Enter key shortcut in Accounts to rapidly add accounts.",
+    "Fixed Auto-Updater: seamless in-place extraction, direct restart into MarineoClash.exe, and file lock protection."
   ]
 }
