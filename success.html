@@ -73,14 +73,14 @@
   <main class="flex-1 max-w-3xl mx-auto px-4 py-12 sm:py-16 w-full flex flex-col items-center justify-center">
     
     <!-- SUCCESS ICON -->
-    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-500/10 border-2 border-emerald-500 flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/20 animate-bounce">
-      <i data-lucide="check" class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400"></i>
+    <div id="status-icon-wrap" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-500/10 border-2 border-emerald-500 flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/20 animate-bounce">
+      <i id="status-icon" data-lucide="check" class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400"></i>
     </div>
 
-    <h1 class="font-display font-extrabold text-2xl sm:text-4xl text-center text-white mb-2">
+    <h1 id="page-title" class="font-display font-extrabold text-2xl sm:text-4xl text-center text-white mb-2">
       Payment Successful!
     </h1>
-    <p class="text-gray-400 text-xs sm:text-base text-center max-w-lg mb-8">
+    <p id="page-subtitle" class="text-gray-400 text-xs sm:text-base text-center max-w-lg mb-8">
       Thank you for purchasing MarineoClash Pro. Your activation key is generated below.
     </p>
 
@@ -149,6 +149,40 @@
 
       </div>
 
+      <!-- DONATION STATE -->
+      <div id="state-donation" style="display: none;">
+        <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-6">
+          <div>
+            <span class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Contribution Type</span>
+            <h3 class="font-bold text-base sm:text-lg text-white">Community Project Donation</h3>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-pink-500/15 text-pink-400 border border-pink-500/30 uppercase flex items-center gap-1">
+            <i data-lucide="heart" class="w-3.5 h-3.5 fill-pink-400"></i> Supporter
+          </span>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-brand-dark/60 border border-brand-border text-center mb-6">
+          <div class="w-14 h-14 mx-auto rounded-full bg-pink-500/10 border border-pink-500/30 flex items-center justify-center mb-4">
+            <i data-lucide="heart-handshake" class="w-7 h-7 text-pink-400"></i>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Thank you so much, <span id="donation-donor-name" class="text-brand-gold">Friend</span>!</h2>
+          <p class="text-gray-300 text-xs sm:text-sm max-w-md mx-auto leading-relaxed mb-4">
+            Your generous contribution of <b id="donation-amount" class="text-emerald-400 font-bold">$0.00</b> has been received. Your support fuels ongoing development and brings us closer to our goal!
+          </p>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs text-gray-300">
+            <i data-lucide="mail-check" class="w-4 h-4 text-emerald-400"></i> Thank-you confirmation email has been dispatched
+          </div>
+        </div>
+
+        <div class="border-t border-brand-border pt-6 text-center">
+          <h4 class="font-bold text-sm text-white mb-2">Want to connect with the team?</h4>
+          <p class="text-xs text-gray-400 mb-4">Join our VIP Discord to receive early updates, test new features, and chat directly with developers.</p>
+          <a href="https://discord.gg/prnFAWAHz4" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-[#5865F2]/25">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Join VIP Discord
+          </a>
+        </div>
+      </div>
+
       <!-- ERROR STATE -->
       <div id="state-error" style="display: none;" class="text-center py-6">
         <i data-lucide="alert-circle" class="w-10 h-10 text-amber-400 mx-auto mb-3"></i>
@@ -202,31 +236,54 @@
         const res = await fetch(url);
         const data = await res.json();
 
-        if (res.ok && data.found && data.license_key) {
-          const keyInput = document.getElementById('key-input');
-          const custName = document.getElementById('customer-name');
-          const planName = document.getElementById('plan-name');
-          const expDate = document.getElementById('expiry-date');
-          const planBadge = document.getElementById('plan-badge');
+        if (res.ok && data.found) {
+          if (data.is_donation) {
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            const donorName = document.getElementById('donation-donor-name');
+            const donationAmt = document.getElementById('donation-amount');
 
-          if (keyInput) keyInput.value = data.license_key;
-          if (custName) custName.textContent = data.customer_name || "Valued Customer";
-          
-          if (data.plan === 'lifetime') {
-            if (planName) planName.textContent = "MarineoClash Pro Lifetime";
-            if (expDate) expDate.textContent = "Never (Lifetime Access)";
-            if (planBadge) planBadge.textContent = "Lifetime";
-          } else {
-            if (planName) planName.textContent = "MarineoClash Pro (90-Day Pass)";
-            if (expDate && data.expires_at) {
-              const d = new Date(data.expires_at);
-              expDate.textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+            if (pageTitle) pageTitle.textContent = "Donation Received!";
+            if (pageSubtitle) pageSubtitle.textContent = "Thank you so much for supporting the MarineoClash project!";
+            if (donorName) donorName.textContent = data.customer_name || "Generous Supporter";
+            if (donationAmt && data.amount_cents) {
+              donationAmt.textContent = '$' + (data.amount_cents / 100).toFixed(2);
             }
+
+            if (loadingEl) loadingEl.style.display = 'none';
+            const donationEl = document.getElementById('state-donation');
+            if (donationEl) donationEl.style.display = 'block';
+            try { lucide.createIcons(); } catch(e) {}
+            return;
           }
 
-          if (loadingEl) loadingEl.style.display = 'none';
-          if (loadedEl) loadedEl.style.display = 'block';
-          try { lucide.createIcons(); } catch(e) {}
+          if (data.license_key) {
+            const keyInput = document.getElementById('key-input');
+            const custName = document.getElementById('customer-name');
+            const planName = document.getElementById('plan-name');
+            const expDate = document.getElementById('expiry-date');
+            const planBadge = document.getElementById('plan-badge');
+
+            if (keyInput) keyInput.value = data.license_key;
+            if (custName) custName.textContent = data.customer_name || "Valued Customer";
+            
+            if (data.plan === 'lifetime') {
+              if (planName) planName.textContent = "MarineoClash Pro Lifetime";
+              if (expDate) expDate.textContent = "Never (Lifetime Access)";
+              if (planBadge) planBadge.textContent = "Lifetime";
+            } else {
+              if (planName) planName.textContent = "MarineoClash Pro (90-Day Pass)";
+              if (expDate && data.expires_at) {
+                const d = new Date(data.expires_at);
+                expDate.textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+              }
+            }
+
+            if (loadingEl) loadingEl.style.display = 'none';
+            if (loadedEl) loadedEl.style.display = 'block';
+            try { lucide.createIcons(); } catch(e) {}
+            return;
+          }
         } else {
           setTimeout(fetchKey, 2000);
         }
