@@ -1,12 +1,16 @@
 {
-  "latest_version": "1.0.1",
-  "release_date": "2026-09-06",
-  "download_url": "https://www.mediafire.com/file/bc7j85qyguzdzto/MarineoClashPro-1.0.1-win64.zip/file",
-  "sha256": "a10c36577c075b18baa079f03a43364ec736989b8e0c093b2037008274e1fbcc",
+  "latest_version": "1.2",
+  "release_date": "2026-09-16",
+  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v1.2/MarineoClash-1.2-update.zip",
+  "sha256": "2545ee39988e31b0ac501260c277cc3a46271d443a8cecb03c64f9d3f5c0b40d",
   "changelog": [
-    "Bundled PyAV & 25 FFmpeg runtime libraries for High-Speed Stream (H.264 @ ~20 FPS) screen capture.",
-    "Fixed Multi-Account UI: accounts now append cleanly without overwriting existing accounts.",
-    "Added Enter key shortcut in Accounts to rapidly add accounts.",
-    "Fixed Auto-Updater: seamless in-place extraction, direct restart into MarineoClash.exe, and file lock protection."
+    "Obsidian & Gold Left Vertical Navigation Sidebar: modern ChatGPT-inspired desktop UI with smooth section headers and Free-tier badge gating.",
+    "ChatGPT-Style In-App License & Plans Hub: side-by-side Free vs. Pro cards, in-card key activation, pass status display, and seamless auto-restart.",
+    "Tactical Blueprint Deploy: precision coordinate deployment with 0px spatial drift protection, custom unit points, and safe perimeter fallback.",
+    "Full Hero Suite Support: King, Queen, Grand Warden, Royal Champion, Duke, and Prince with automated ability activation.",
+    "Discord Webhook Notifications: asynchronous rich embed updates for battle attacks, star counts, wall upgrades, and account switching.",
+    "Deterministic Contour Wall Upgrader: 5.5ms contour HUD reader, HSV pure white digit templates, automatic -1 wall stepback, and 100% gem spending protection.",
+    "Multi-Account 24/7 Continuous Loop: unattended Supercell ID rotation with automatic network drop and error dialog recovery.",
+    "Signed Ed25519 Auto-Updates: optional zero-downtime updates strictly preserving config.json and license.json."
   ]
 }
