@@ -1,15 +1,19 @@
 {
   "latest_version": "1.2",
-  "release_date": "2026-09-16",
+  "release_date": "2026-09-17",
   "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v1.2/MarineoClash-1.2-update.zip",
-  "sha256": "66ee250de2b96ad2f50fa6d51504720910d67d2a8bbf99b0069dfbcb730f29c6",
+  "sha256": "9d0155e7766f2fd18bcfc6a024db00184949135eeeee171998dd3b0ca51ead43",
   "changelog": [
     "Obsidian & Gold Left Vertical Navigation Sidebar: modern ChatGPT-inspired desktop UI with smooth section headers and Free-tier badge gating.",
     "ChatGPT-Style In-App License & Plans Hub: side-by-side Free vs. Pro cards, in-card key activation, pass status display, and seamless auto-restart.",
     "Tactical Blueprint Deploy: precision coordinate deployment with 0px spatial drift protection, custom unit points, and safe perimeter fallback.",
     "Full Hero Suite Support: King, Queen, Grand Warden, Royal Champion, Duke, and Prince with automated ability activation.",
-    "Discord Webhook Notifications: asynchronous rich embed updates for battle attacks, star counts, wall upgrades, and account switching.",
+    "Universal Siege Deployment: Auto-detects and deploys any equipped siege machine using universal mode-switch badge matching with offset card-body selection.",
+    "In-Battle Speedup Automation: Real-time detection and automated clicking of the in-battle speedup button throughout attack execution.",
+    "Army Cooking & Training Hardening: Verified Saved Recipes tab confirmation, clan request modal dismissal, and resilient non-blocking bin clearing.",
     "Deterministic Contour Wall Upgrader: 5.5ms contour HUD reader, HSV pure white digit templates, automatic -1 wall stepback, and 100% gem spending protection.",
+    "Error Modal Recovery: 100% automated handling for Disconnect/Inactivity popups and post-attack Star Bonus Okay buttons.",
+    "Discord Webhook Notifications: asynchronous rich embed updates for battle attacks, star counts, wall upgrades, and account switching.",
     "Multi-Account 24/7 Continuous Loop: unattended Supercell ID rotation with automatic network drop and error dialog recovery.",
     "Signed Ed25519 Auto-Updates: optional zero-downtime updates strictly preserving config.json and license.json."
   ]
