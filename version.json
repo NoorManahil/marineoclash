@@ -1,20 +1,19 @@
 {
-  "latest_version": "1.2",
-  "release_date": "2026-09-17",
-  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v1.2/MarineoClash-1.2-update.zip",
-  "sha256": "9d0155e7766f2fd18bcfc6a024db00184949135eeeee171998dd3b0ca51ead43",
+  "latest_version": "1.3",
+  "release_date": "2026-09-24",
+  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v1.3/MarineoClash-1.3-update.zip",
+  "sha256": "514422ad1b62fe737cc5832ed99fc8785cf3c666a87594c6d0238933436757ba",
   "changelog": [
-    "Obsidian & Gold Left Vertical Navigation Sidebar: modern ChatGPT-inspired desktop UI with smooth section headers and Free-tier badge gating.",
-    "ChatGPT-Style In-App License & Plans Hub: side-by-side Free vs. Pro cards, in-card key activation, pass status display, and seamless auto-restart.",
-    "Tactical Blueprint Deploy: precision coordinate deployment with 0px spatial drift protection, custom unit points, and safe perimeter fallback.",
-    "Full Hero Suite Support: King, Queen, Grand Warden, Royal Champion, Duke, and Prince with automated ability activation.",
-    "Universal Siege Deployment: Auto-detects and deploys any equipped siege machine using universal mode-switch badge matching with offset card-body selection.",
-    "In-Battle Speedup Automation: Real-time detection and automated clicking of the in-battle speedup button throughout attack execution.",
-    "Army Cooking & Training Hardening: Verified Saved Recipes tab confirmation, clan request modal dismissal, and resilient non-blocking bin clearing.",
-    "Deterministic Contour Wall Upgrader: 5.5ms contour HUD reader, HSV pure white digit templates, automatic -1 wall stepback, and 100% gem spending protection.",
-    "Error Modal Recovery: 100% automated handling for Disconnect/Inactivity popups and post-attack Star Bonus Okay buttons.",
-    "Discord Webhook Notifications: asynchronous rich embed updates for battle attacks, star counts, wall upgrades, and account switching.",
-    "Multi-Account 24/7 Continuous Loop: unattended Supercell ID rotation with automatic network drop and error dialog recovery.",
-    "Signed Ed25519 Auto-Updates: optional zero-downtime updates strictly preserving config.json and license.json."
+    "Free and Pro Event Troops use an add/remove 1-4 slot setup and deploy before the normal Tactical Blueprint army.",
+    "Home Village configuration reflows cleanly between normal-width stacked and maximized two-column layouts.",
+    "Pre-run account planning now keeps START PLAN and CANCEL permanently visible at the supported 300-DPI layout.",
+    "Universal per-account Home, Builder, and request-only profiles with validation and pre-run planning.",
+    "Controlled multi-account execution with account checkboxes, configuration copying, and phase-error isolation.",
+    "Guarded Pro Suggested Research with verified affordability checks and strict gem-spending protection.",
+    "Builder Base army preparation and post-two-successful-attacks loot-cart collection.",
+    "Adaptive update dialog with scrolling notes and permanently visible update actions.",
+    "Obsidian and royal-gold interface refresh with native Clash resource artwork.",
+    "Global Worker Error recovery through independently verified WorkerError and WorkerCross controls.",
+    "Reliability improvements for STOP handling, bounded retries, stream freshness, and result retention."
   ]
 }
