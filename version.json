@@ -1,21 +1,20 @@
 {
-  "latest_version": "2.0",
-  "release_date": "2026-10-19",
-  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.0/MarineoClash-2.0-update.zip",
-  "sha256": "b294a39e4c29c7dff14a3e446525d3b10a777150bf1fe4ebbb6dc7427c4be797",
+  "latest_version": "2.1",
+  "release_date": "2026-11-03",
+  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1/MarineoClash-2.1-update.zip",
+  "sha256": "afc089e03de07dc49cae0d28e286352ce58e372118b0a7d3dfcb22765ad2c2bf",
   "changelog": [
-    "v2.0: obsidian and royal-gold control center with responsive configuration and per-account planning.",
-    "Updated Home and Builder Battle-menu entry with in-menu army preparation and direct Find Match / Find Now handoff.",
-    "Faster boat navigation and Builder camera preparation with bounded gestures instead of repeated terrain corrections.",
-    "Both village boat cameras allow a second drag only when the first has not exposed the boat; cart collection shares this bounded camera.",
-    "Faster standard ADB raw capture with PNG fallback, shared frame checks, and bounded parallel popup matching reduce repeated startup work.",
-    "Shared Home and Builder Build-panel wall entry restores the horizontal controls before existing gem-safe upgrades.",
-    "Wall affordability now reads cost digits without mistaking red-brown hammer artwork for an unaffordable price.",
-    "Updated Home and Builder resource HUD regions and shared complete-digit matching fix clipped balances and false digit ambiguity while retaining two-frame agreement.",
-    "Global watchdog handles known blocking popups, Welcome Back readiness, disconnects, and inactivity recovery.",
-    "Home event rewards and chest opening flow through verified controls before returning to the village.",
-    "Clearer dashboard activity for accounts, army preparation, popup recovery, wall entry, and collection.",
-    "Troop Requests is temporarily disabled in every edition and marked Update Pending; saved request-only accounts are skipped.",
-    "Portable signed updates preserve configuration and license files."
+    "New Bot Manager with named LDPlayer/MuMu assignments, isolated bot processes, saved account plans and per-bot logs/statistics.",
+    "Redesigned black-and-gold settings: numbered account configs, continuous SET forms, quantity grids, copying, root/Supercell/current-account selection and account resume.",
+    "Selected-emulator Native capture is primary in both editions, with validated ADB fallback and bounded startup recovery. MuMu supports native input streams.",
+    "Local PP-OCRv6 Small models are bundled for upgrade text and army capacity; Supercell switching retains Tesseract. No model downloads are required.",
+    "Independent persistent building, laboratory and pet upgrade queues, builder reservation and shared payment-journal safeguards.",
+    "Home supports basic army fallback, Event Troops, Tactical Blueprint, Battle Pass rewards and optional collection, clan joining, requests and obstacle tasks.",
+    "Reduced repeated successful-state scans and OCR; conditional recovery uses workflow frames and deployment uses continuous input streams. Whole-run speed gains are not claimed.",
+    "Free: two bots, five account configs per bot, all supported troops/spells/Event Troops/targets, walls/rewards, cycles/resume, three building selections plus three lab selections and one pet per account.",
+    "Free uses Home or Builder across each bot plan. Pro supports unlimited bots, 50 configs per bot, both villages in one plan, full queues and optional automation/Discord notifications.",
+    "Downgrade preserves saved settings. New-building placement, Builder collector harvesting and other unavailable controls remain disabled in both editions.",
+    "Account Creation is an independent Pro/root-required engine. Broader tutorial/root switching, optional-task and gameplay acceptance remains pending; see release limitations.",
+    "Standalone Windows x64 package includes its Python runtime, local OCR, ADB and input helpers; signed updates preserve user data. No Python installation is needed."
   ]
 }
