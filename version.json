@@ -1,20 +1,15 @@
 {
-  "latest_version": "2.1",
-  "release_date": "2026-11-03",
-  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1/MarineoClash-2.1-update.zip",
-  "sha256": "afc089e03de07dc49cae0d28e286352ce58e372118b0a7d3dfcb22765ad2c2bf",
+  "latest_version": "2.1.1",
+  "release_date": "2026-11-08",
+  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1.1/MarineoClash-2.1.1-update.zip",
+  "sha256": "97f5de0dd4dd844dcd2e3af421c0eeb79e0bf40867f902ad6454a888bf3fd9bf",
   "changelog": [
-    "New Bot Manager with named LDPlayer/MuMu assignments, isolated bot processes, saved account plans and per-bot logs/statistics.",
-    "Redesigned black-and-gold settings: numbered account configs, continuous SET forms, quantity grids, copying, root/Supercell/current-account selection and account resume.",
-    "Selected-emulator Native capture is primary in both editions, with validated ADB fallback and bounded startup recovery. MuMu supports native input streams.",
-    "Local PP-OCRv6 Small models are bundled for upgrade text and army capacity; Supercell switching retains Tesseract. No model downloads are required.",
-    "Independent persistent building, laboratory and pet upgrade queues, builder reservation and shared payment-journal safeguards.",
-    "Home supports basic army fallback, Event Troops, Tactical Blueprint, Battle Pass rewards and optional collection, clan joining, requests and obstacle tasks.",
-    "Reduced repeated successful-state scans and OCR; conditional recovery uses workflow frames and deployment uses continuous input streams. Whole-run speed gains are not claimed.",
-    "Free: two bots, five account configs per bot, all supported troops/spells/Event Troops/targets, walls/rewards, cycles/resume, three building selections plus three lab selections and one pet per account.",
-    "Free uses Home or Builder across each bot plan. Pro supports unlimited bots, 50 configs per bot, both villages in one plan, full queues and optional automation/Discord notifications.",
-    "Downgrade preserves saved settings. New-building placement, Builder collector harvesting and other unavailable controls remain disabled in both editions.",
-    "Account Creation is an independent Pro/root-required engine. Broader tutorial/root switching, optional-task and gameplay acceptance remains pending; see release limitations.",
-    "Standalone Windows x64 package includes its Python runtime, local OCR, ADB and input helpers; signed updates preserve user data. No Python installation is needed."
+    "Fixed army editing getting stuck after a menu closed or scrolling with the troop menu closed.",
+    "Fixed troop and spell controls being missed when the army panel shifts between account layouts.",
+    "Added support for /6 builder and /2 laboratory counters, including Goblin availability. Reserve 1 Builder remains respected.",
+    "Improved recognition of building, research and pet names. Unaffordable upgrades are skipped.",
+    "Fixed wall selection exceeding available resources and errors when removing an extra wall.",
+    "Improved wall spending totals while resource counters update.",
+    "Saved settings and licensing are preserved. Stop all bots and close MarineoClash before updating."
   ]
 }
