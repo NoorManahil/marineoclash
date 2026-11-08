@@ -1,15 +1,13 @@
 {
-  "latest_version": "2.1.1",
+  "latest_version": "2.1.2",
   "release_date": "2026-11-08",
-  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1.1/MarineoClash-2.1.1-update.zip",
-  "sha256": "97f5de0dd4dd844dcd2e3af421c0eeb79e0bf40867f902ad6454a888bf3fd9bf",
+  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1.2/MarineoClash-2.1.2-update.zip",
+  "sha256": "9824bbcab158fb2791596718f69cd6162f0aa17411696fcab25083546223b972",
   "changelog": [
-    "Fixed army editing getting stuck after a menu closed or scrolling with the troop menu closed.",
-    "Fixed troop and spell controls being missed when the army panel shifts between account layouts.",
-    "Added support for /6 builder and /2 laboratory counters, including Goblin availability. Reserve 1 Builder remains respected.",
-    "Improved recognition of building, research and pet names. Unaffordable upgrades are skipped.",
-    "Fixed wall selection exceeding available resources and errors when removing an extra wall.",
-    "Improved wall spending totals while resource counters update.",
+    "Account Creation supports both Accept all and regional OK privacy dialogs.",
+    "Startup recognizes the current step and up to five following steps through step 11, allowing optional prompts to be skipped when a valid later screen is visible.",
+    "Load Village is optional; its Cancel control is used only with the matching popup heading.",
+    "After step 11, the tutorial keeps its strict order. Startup controls retain fresh-screen, heading and gem safeguards.",
     "Saved settings and licensing are preserved. Stop all bots and close MarineoClash before updating."
   ]
 }
