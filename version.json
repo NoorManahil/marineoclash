@@ -1,13 +1,15 @@
 {
-  "latest_version": "2.1.2",
-  "release_date": "2026-11-08",
-  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1.2/MarineoClash-2.1.2-update.zip",
-  "sha256": "9824bbcab158fb2791596718f69cd6162f0aa17411696fcab25083546223b972",
+  "latest_version": "2.1.3",
+  "release_date": "2026-11-10",
+  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1.3/MarineoClash-2.1.3-update.zip",
+  "sha256": "0df7986ed6b92660b6ac3d2a79ab08e24d816719a9aa4bfd0ac44870b1a84c78",
   "changelog": [
-    "Account Creation supports both Accept all and regional OK privacy dialogs.",
-    "Startup recognizes the current step and up to five following steps through step 11, allowing optional prompts to be skipped when a valid later screen is visible.",
-    "Load Village is optional; its Cancel control is used only with the matching popup heading.",
-    "After step 11, the tutorial keeps its strict order. Startup controls retain fresh-screen, heading and gem safeguards.",
+    "Battle Screenshot Taker and optional Home/Builder pre-deployment screenshots are included in Free and Pro.",
+    "Editable upgrade and pet catalogues ship beside the executable; updates preserve your edits and screenshot datasets.",
+    "UIAutomator2 and adbutils are removed. The bundled owned Android input helper handles gestures and Unicode paste.",
+    "Portable Windows package includes Python, Qt, ADB, OCR models and runtime libraries. Extract the whole folder; an installed LDPlayer or MuMu and Clash of Clans are still required.",
+    "Army preparation waits for troop-tray motion and verifies the configured unit housing increase.",
+    "No runtime diagnostics or test suites were run for this release by request. Static packaging and signed archive checks do not establish live or clean-machine acceptance.",
     "Saved settings and licensing are preserved. Stop all bots and close MarineoClash before updating."
   ]
 }
