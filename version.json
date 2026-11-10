@@ -1,9 +1,14 @@
 {
-  "latest_version": "2.1.3",
+  "latest_version": "2.1.4",
   "release_date": "2026-11-10",
-  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1.3/MarineoClash-2.1.3-update.zip",
-  "sha256": "0df7986ed6b92660b6ac3d2a79ab08e24d816719a9aa4bfd0ac44870b1a84c78",
+  "download_url": "https://github.com/NoorManahil/marineoclash/releases/download/v2.1.4/MarineoClash-2.1.4-update.zip",
+  "sha256": "1329a6b0579509fffebfb22c7b80694cb08837fa357ecb7b54b06a5091e8eb1c",
   "changelog": [
+    "Loot filtering is now included in Free and Pro, with existing Gold/Elixir thresholds and selection rules preserved.",
+    "Battle Screenshot Taker and optional attack screenshots now save PNG images only; no new JSON sidecars are created. Existing files are preserved.",
+    "Upgrade list drags hold briefly before release; wall selection requires wall-specific controls and upgrade confirmations verify the requested item name.",
+    "Upgrade New/Free label OCR avoids excessive image enlargement while preserving the isolated name crop and spending safeguards.",
+    "MuMu input readiness and safe pre-submission fallback are strengthened. An uncertain input stops the run without replay or another account/cycle.",
     "Battle Screenshot Taker and optional Home/Builder pre-deployment screenshots are included in Free and Pro.",
     "Editable upgrade and pet catalogues ship beside the executable; updates preserve your edits and screenshot datasets.",
     "UIAutomator2 and adbutils are removed. The bundled owned Android input helper handles gestures and Unicode paste.",
